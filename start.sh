@@ -1,2 +1,2 @@
 #!/bin/bash
-python utils.py
+python train.py

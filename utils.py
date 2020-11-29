@@ -41,19 +41,19 @@ def prepare_data(img_test, where_to_save):
             os.chdir(cur_dir)
             start_zeit = time.time()
             print('> starting to write file')
-            np.savez_compressed(where_to_save + f'_{count}',{'input':im_list,'output':lbl_list})
+            np.savez_compressed(where_to_save + f'_{count}',input=im_list,output=lbl_list)
             print('> writing to disk took {:.4} s'.format(time.time() - start_zeit))
             im_list = []
             lbl_list = []
             os.chdir(img_test)
     os.chdir(cur_dir)
     if im_list or lbl_list:
-        np.savez_compressed(where_to_save + f'_{count}',{'input':im_list,'output':lbl_list})
+        np.savez_compressed(where_to_save + f'_{count}',input=im_list,output=lbl_list)
 
 if __name__ == "__main__":
-    #img_test = "data/train/"
-    #print("=========== Train data ===============")
-    #prepare_data(img_test,"datasets/training_cat_dogs.h5")
+    img_test = "data/train/"
+    print("=========== Train data ===============")
+    prepare_data(img_test,"datasets/training_cat_dogs.h5")
     print("=========== Test data ===============")
     img_test = "data/test1/test1/"
     prepare_data(img_test,"datasets/testing_cat_dogs.h5")
